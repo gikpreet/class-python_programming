@@ -1,6 +1,16 @@
-== Module 01: 계산이란?
+= Module 01: 계산이란?
 
-**Topics**
+== Practice
+
+[mermaid, practice, svg]
+----
+flowchart TD
+    A(Problem Solviong) --> B(Knowlegde of Concepts)
+    B --> C(Programming Skills)
+    C --> A
+----
+
+== Topics
 * 데이터 구조
 * 계산으로서의 반복 및 재귀
 * 프로시저와 데이터
@@ -8,7 +18,7 @@
 * 알고리즘의 분류, 정렬과 검색
 * 알고리즘의 복잡도
 
-## 컴퓨터는 어떤 일을 하는가?
+== 컴퓨터는 어떤 일을 하는가?
 * 기본적으로:
     * 계산을 수행함: 1초에 수십 억 번의 계산을 수행
     * 결과를 저장: 수백 Tera byte의 저장 공간을 가짐
@@ -17,8 +27,13 @@
     * 프로그래머가 정의한 계산
 * 컴퓨터는 이야기 하지 않은 것을 알지 못함
 
-## Knowledge의 종류
-* 선언적 knowledge는 "사실의 상태"
+== Knowledge의 종류
+* 선언적 knowledge(declarative knowledge)는 "사실의 상태"
+* 명령적 knowlegde(imparative knowledge)는 "레시피" 또는 "how-to"
+    * 경품에 응모
+    * IDE(Integrated Development Environment)를 열고
+    * 1에서 n 사이의 무작위 숫자를 선택
+    * 번호를 확인
 
 ## 에제
 * 어떤 숫자의 제곱 x는 y이다.
