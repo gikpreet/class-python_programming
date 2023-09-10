@@ -12,3 +12,40 @@ greeting = hi = " " + name
 
 * Python 문서에 정의된 대로 문자열에 대해 일부 작업을 수행 +
 silly = hi + " " + name * 3
+
+== INPUT/OUTPUT: print
+
+* 콘솔로 무언가를 내보낼 때 사용
+* 키워드는 **print**
+
+[source, python]
+----
+x = 1
+print(x)
+x_str = str(x)
+print("my fav num is", x, ".", "x = ", x)
+print("my fav num is" + x_str + :". " "x = " + x_str)
+----
+
+== INPUT/OUTPUT: input("")
+
+* 따옴표 안이 있는 무엇이든 출력
+* 사용자가 무언가를 입력하고 Enter를 누르는 경우
+* 해당 값을 변수에 할당
+
+[source, python]
+----
+text = input("Type anything...")
+print(5 * text)
+----
+
+* input은 string을 주므로 숫자로 작업할 경우 반드시 변환해야 함
+
+[source, python]
+----
+num = int(input("Type a number... "))
+print(5 * text)
+----
+
+바로 여기 이 줄에서 사용자가 입력하는 것은 무엇이든 문자열이 됩니다. 그리고 우리는 해당 문자열 개체를 text라는 변수에 바인딩할 것입니다. 이제 내 프로그램에서 이 가변 텍스트를 사용하여 원하는 모든 작업을 수행할 수 있습니다. 이 경우에는 5 * text를 인쇄하겠습니다. 좋아요. 예를 들어 사용자가 "ha"를 입력했다면 "ha"를 5번 인쇄하겠습니다. 사용자가 나에게 5를 줬다면 그 사용자는 무엇이라고 생각합니까? 무엇이 인쇄될 것이라고 생각합니까? 25번 아니면 5번? 엄청난. 예. 정확히. 5 다섯 번.
+
