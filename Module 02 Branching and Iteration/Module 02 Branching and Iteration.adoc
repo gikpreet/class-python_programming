@@ -1,0 +1,14 @@
+= Module 02 분기와 반복
+
+== STRINGS
+
+* 문자, 특수 문자, 빈칸, 숫자
+* 따옴표(quotation marks) 또는 작은 따옴표(single quotes)로 싸임 +
+h1 = "hello there"
+* 문자열 접합 +
+name = "ana"
+greet = hi + name
+greeting = hi = " " + name
+
+* Python 문서에 정의된 대로 문자열에 대해 일부 작업을 수행 +
+silly = hi + " " + name * 3
