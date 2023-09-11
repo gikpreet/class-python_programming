@@ -1,0 +1,28 @@
+= Module 03: 문자열 조작, 추측 및 확인, 근사치, 이등분
+
+== 지난 시간에...
+
+* strings
+* 분기 - if/elif/else
+* while loops
+* for loop
+
+== Agenda
+
+* 문자열 조작
+* guess와 check 알고리즘
+* 근사해 알고리즘
+* 이등분 메소드
+
+== STRINGS
+
+* 대소문자가 구분되는 문자(characters)의 순서로 생각할 수 있음
+* ==, >, < 등으로 비교할 수 있음
+* `len()` 은 괄호안의 string의 길이를 알아내는데 사용하는 함수
+
+[source, python]
+----
+s = "abc"
+len(s) -> 3을 계산함
+----
+
