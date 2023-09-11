@@ -47,5 +47,41 @@ num = int(input("Type a number... "))
 print(5 * text)
 ----
 
-바로 여기 이 줄에서 사용자가 입력하는 것은 무엇이든 문자열이 됩니다. 그리고 우리는 해당 문자열 개체를 text라는 변수에 바인딩할 것입니다. 이제 내 프로그램에서 이 가변 텍스트를 사용하여 원하는 모든 작업을 수행할 수 있습니다. 이 경우에는 5 * text를 인쇄하겠습니다. 좋아요. 예를 들어 사용자가 "ha"를 입력했다면 "ha"를 5번 인쇄하겠습니다. 사용자가 나에게 5를 줬다면 그 사용자는 무엇이라고 생각합니까? 무엇이 인쇄될 것이라고 생각합니까? 25번 아니면 5번? 엄청난. 예. 정확히. 5 다섯 번.
+== int, float, string 비교 연산
+
+* i와 j는 변수 이름
+* 아래 연산들은 Boolean으로 계산됨
+
+[source, python]
+----
+i > j
+i >= j
+i < j
+i <= j
+i == j
+i != j
+----
+
+== bool 비교 연산
+
+* a와 b가 변수 이름인 경우 (boolean 값)
+
+----
+not a   -> True if a is False
+         False if a is True
+a and b -> True if both are True
+a or b  -> True if either or both are True
+----
+
+|===
+|A | B | A and B | A or B
+
+|True |True |True |True
+|True |False |False |True
+|False|False |False |True
+|False|False |False |False
+|===
+
+
+
 
