@@ -306,7 +306,7 @@ while <condition_1>:
 * 반복 회수를 알고 있는 경우
 * `break` 로 반복을 일찍 멈출 수 있음
 * **counter**를 사용
-* `while` 반복을 사용하여 `for` 반qhr을 재작성 할 수 있음
+* `while` 반복을 사용하여 `for` 반복을 재작성 할 수 있음
 
 `while` loops
 
