@@ -1,0 +1,23 @@
+= Module 04: Decomposition, Abstraction, Functions
+
+== 지난 시간에
+* while 반복 vs. for 반복
+* 두 종류의 반복에 반드시 익숙해져야 한다
+* 언제 쓰는지 알아야 한다
+* guess-and-check(추측과 확인), approximation method(추측 방법)
+* besection method(이분법)을 사용하여 프로그램의 속도를 높임
+
+== 오늘
+* 프로그램을 구조화하고 상세를 숨김
+* functions(함수)
+* specifications(사양)
+* 키워드: `return` vs `print`
+* scpoe(범위)
+
+== Good Programming
+
+* 많은 코드가 반드시 좋은 것은 아니다.
+* 좋은 프로그래머는 기능적인 것의 양으로 측정됨
+* 기능 소개
+* decomposition(분해)와 abstraction(추상화)를 달성하는 메커니즘
+
