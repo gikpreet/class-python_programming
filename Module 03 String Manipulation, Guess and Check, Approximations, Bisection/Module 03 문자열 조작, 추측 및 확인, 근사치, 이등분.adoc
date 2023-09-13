@@ -213,3 +213,21 @@ while abs(guess**3 - cube) >= epsilon:
 print('num_guess =', num_guesses)
 print(guess, 'is close to the cobe root of', cube)
 ----
+
+== BISECTION SEARCH CONVERGENCE
+
+:stem: asciimath
+
+* 검색 공간
+** 첫 번째 추측: N/2
+** 두 번째 추측: N/4
+** k 번째 추측: N/2^k^
+* 추측은 stem:[log_2N]으로 수렴됨
+* 이분법 검색은 함수 값이 입력에 따라 단조롭게 변할 때 동작함
+* 코드는 1보다 큰 cube에서만 작동합니다. 이유는?
+* 해볼 것   -> 음수 cube에서도 동작하도록 수정
+            -> x < 1에서 동작하도록
+
+== x < 1
+* x < 1인 경우 검색 공간은 0에서 x까지이지만 큐브 루트는 x보다 크고 1보다 작습니다.
+* x 값에 따라 검색 공간을 선택하도록 코드를 수정합니다.
