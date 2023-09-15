@@ -27,8 +27,8 @@
 
 == 지금까지의 반복 알고리즘
 
-* 반복 구조(while 및 for 루프)는 반복 알고리즘으로 이어짐
-* 루프를 통해 각 반복마다 업데이트되는 상태 변수 집합에서 계산을 캡처
+* 반복 구조(while 및 for 루프)는 **반복** 알고리즘으로 이어짐
+* 루프를 통해 각 반복마다 업데이트되는 **상태 변수** 집합에서 계산을 캡처
 
 == 곱셈 - iterative solution
 
@@ -46,3 +46,62 @@ def mult_iter(a, b):
         b -= 1
     return result
 ----
+
+== 곱셈 - recursive soluition
+
+* recursive step
+** 문제를 동일한 문제의 더 **간단하고 작은** 버전으로 줄이는 방법을 생각
+* base case
+** 직접적으로 해결할 수 있는 간단한 사례에 도달할 때까지 문제를 계속 줄임
+** when b = 1, a * b = a
+
+----
+a * b = a + a + a + a + a + a + a + ... + a
+        -----------------------------------
+                                        b times
+      =  a + a + a + a + a + a + a + ... + a
+            -------------------------------
+                                        b - 1 times
+      =  a + a * (b - 1)
+----
+
+[source, python]
+----
+def mult(a, b):
+    if b == 1:
+        return a
+    else:
+        return a + mult(a, b - 1)
+----
+
+== Factorial
+
+----
+n! = n * (n - 1) * (n - 2) * (n - 3) * ... * 1
+----
+
+* n의 factorial을 알고 있나요?
+----
+n = 1
+
+if n == 1:
+    return 1
+----
+* 문제를 어떻게 줄이는가? 기본 사례에 도달하기 위해 더 간단한 관점에서 다시 작성
+
+== Recursion Function Scope Example
+
+[source, python]
+----
+def fact(n):
+    if n == 1:
+        return 1
+    else:
+        return n * fact(n - 1)
+
+print(fact(4))
+----
+
+== Some Observation
+
+* 각 recursive는 **자신만의 scope/environment**를 가지는 함수를 호출
