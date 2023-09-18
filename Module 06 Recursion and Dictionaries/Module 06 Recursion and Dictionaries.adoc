@@ -105,3 +105,77 @@ print(fact(4))
 == Some Observation
 
 * 각 recursive는 **자신만의 scope/environment**를 가지는 함수를 호출
+* 범위 내의 변수 바인딩은 recursive 호출로 변경되지 않음
+* 함수 호출이 값을 전당ㄹ하면 제어 흐름이 이전 범위로 다시 전달됨
+
+== Iteration vs. Recursive
+
+[source, python]
+----
+def factorial_iter(n):
+    prod = 1
+    for i in range(1, n + 1):
+        prod *= i
+    return prod
+----
+
+[source, python]
+----
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+----
+
+== 귀납적 추론(Inductive Reasoning)
+
+* recursive code가 어떻게 동작하는지 얼마나 알고 있습니까?
+* `mult_iter` 는 b가 초기에 양수이기 때문에 종료되고 루프를 돌 때마다 1씩 감소함. 따라서 결국에는 1보다 작아야 합니다.
+* b = 1로 `mult` 를 호출하면 recursive 호출을 하지 않고 종료
+* b > 1로 `mult` 를 호출하면 보다 작은 b로 recursive 호출을 수행; 아는 반드시 b = 1으로 호출 됨
+
+[source, pyton]
+----
+def mult_iter(a, b):
+    result = 0
+    while b > 0:
+        result += a
+        b -= 1
+    return result
+----
+
+[source, python]
+----
+def mult(a, b):
+    if b == 1:
+        return a
+    else:
+        return a + mult(a, b - 1)
+----
+
+== 귀납 예
+
+* 0 + 1 + 2 + 3 + ... + n = (n(n + 1)) / 2
+* 증명:
+** n = 0 이면 왼쪽 값은 0이고, 오른쪽 값은 0 * 1 / 2 = 0, 그러므로 True\
+** 어떤 k에 대해, 참이라고 가정마현, 다음과 같이 됨
+*** 0 + 1 + 2 + ... + k + (k + 1) = \((k + 1)(k + 2)) / 2
+*** 왼쪽 값은 k(k + 1) / 2 + (k + 1), 크기 k의 문제에 대해 속성이 유지된다는 가정에 의함
+*** 이는 대수식에 의해 \((k + 1)(k + 2)) / 2 가 됨
+
+== 코드와의 관련성
+
+* 같은 로직을 적용
+
+[source, python]
+----
+def mult(a, b):
+    if b == 1:
+        return a
+    else:
+        return a + mult(a, b - 1)
+----
+
+* 기본적으로, `mult` 는 반드시 옳은 값을 return 한다는 것을 볼 수 있음
+* 재귀적인 경우, mult는 b보다 작은 크기의 문제에 대한 답을 정확하게 반환하고, 덧셈 단계에서는 크기 b의 문제에 대한 정답도 반환해야 한다고 가정할 수 있음
