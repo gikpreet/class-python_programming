@@ -179,3 +179,45 @@ def mult(a, b):
 
 * 기본적으로, `mult` 는 반드시 옳은 값을 return 한다는 것을 볼 수 있음
 * 재귀적인 경우, mult는 b보다 작은 크기의 문제에 대한 답을 정확하게 반환하고, 덧셈 단계에서는 크기 b의 문제에 대한 정답도 반환해야 한다고 가정할 수 있음
+
+== Hanoi Tower
+
+[source, python]
+----
+def towers(n, fr, to, spare):
+    if n == 1:
+        printMove(fr, to)
+    else:
+        towers(n - 1, fr, spare, to)
+        towers(1, fr, to, spare)
+        towers(n - 1, spare, to, fr)
+----
+
+== 여러 base case recursion
+
+* 피보나치 수열
+** 레오나르도 피사(피보나치)가 아래의 모델을 제시
+*** 새로 태어난 한 쌍의 토끼(수컷, 암컷)이 울타리에 넣어짐
+*** 한 달에 한번 짝짓기를 함
+*** 토끼의 임신 기간은 한 달
+*** 토끼는 죽지 않음, 암컷은 한 달에 한번 암, 수 한쌍을 낳으며, 성숙하는데 한 달이 걸림
+*** 1년 후 몇 마리의 암컷이 있을 것인가?
+
+== Fibonacci
+
+* 한 달후 (0으로 호칭) - 1 암컷
+* 두 달째 - 여전히 암컷 한마리 (임신)
+* 세 달째 - 암컷 두 마리, 한마리는 임신
+* 일반적으로, females(n) = femails(n - 1) + femals (n - 2)
+** 모든 암컷은 n 개월에서 생후 n - 2이 되면 한 마리의 암컷을 낳음
+** 이는 전체 개월 수에서 n - 1마다 한 마리의 암컷이 추가됨
+
+== recursion on non-numeric
+
+* string의 문자열이 palindrome인지 판별. 예) 바로 읽으나 거꾸로 읽으나 같은 문자열
+** "Able was I, ere I saw Elba" - 나폴레옹을 기념하며
+** "Are we not drawn onward, we few, drawn onward to new era?" - 앤 마이클스를 기념하며
+
+== Solving recursively?
+
+*
