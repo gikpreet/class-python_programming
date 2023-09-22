@@ -220,4 +220,147 @@ def towers(n, fr, to, spare):
 
 == Solving recursively?
 
-*
+* 첫 번째로, 문자열(string)을 구두점 제거를 이용해 단일 문자(character)로 변경하고, 대문자를 소문자로 변경
+* 그리고
+** 기본 케이스: 문자열의 길이가 1 또는 0이면 palindrome
+** Recursive case:
+*** 만약 첫 번째 문자가 마지막 문자와 같으면, 가운데가 palindrome이면 palindrome.
+
+== Example
+
+* 'Able was I, ere I saw Elba' -> 'ablewasieraisawelba'
+* `isPalindrome('ablewasieraisawelba')` 은
+** `a` == `a` 면서 isPalindrome('blewasieraisawelb')`
+
+== Code
+
+[source, python]
+----
+def isPalindrom(s):
+    def toChars(s):
+        s = lower()
+        ans = ''
+        for c in s:
+            if c in 'abcdefghijklmnopqrstuvwxyz':
+                ans = ans + c
+        return ans
+    
+    def isPal(s):
+        if len(s) <= 1:
+            return True
+        else:
+            return s[0] == s[-1] and isPal(s[1:-1])
+        
+    return isPal(toChars(s))
+----
+
+== 학생 정보를 어떻게 저장할까?
+
+* 모든 정보에 대해 별도의 목록을 사용하여 저장할 수 있음
+
+----
+names = ['Ana', 'John', 'Denise', 'Katy']
+grade = ['B', 'A+', 'A', 'A']
+course = [2.00, 6.0001, 20.002, 9.01]
+----
+
+* 각 아이템에 대한 분리된 리스트
+* 각 리스트는 반드시 같은 길이여야 함
+
+== How to Update/Retrieve Student Info
+
+[source, python]
+----
+def get_grade(student, name_list, grade_list, course_list):
+    i = name_list.index(student)
+    grade = grade_list[i]
+    course = course_list[i]
+    return (course, grade)
+----
+
+* 추적해야 할 사항이 많으면 지저분해짐
+* 많은 list를 관리해야 하고, argument로 처리해야 함
+* 항상 index를 정수형으로 사용해야 함
+* 여러개의 list를 함께 변경해야 한다는 것을 기억해야 함
+
+== 더 낫고 깔끔한 방법 - Dictionary
+
+* 관심있는 항목을 인덱스로 사용할 수 있음 (정수형이 아니어도 됨)
+* 하나의 데이터 소스, 분리된 리스트가 아님
+
+image:./images/image01.png[]
+
+== Python dictionary
+
+* 데이터의 쌍을 저장
+** key
+** value
+
+[source, python]
+----
+my_dict = {}
+grades = {'Ana':'B', 'John':'A+', 'Denise':'A', 'Katy':'A'}
+----
+
+== Dictionaly lookup
+
+* list를 indexing 하는 것과 유사
+* Key를 사용하여 찾음
+* key와 연관된 값을 검색
+* key가 발견되지 않으면 오류
+
+[source, python]
+----
+grades = {'Ana':'B', 'John':'A+', 'Denise':'A', 'Katy':'A'}
+grades['John']
+grades['Sylvan']
+----
+
+== Dictionary Operations
+
+[source, python]
+----
+grades = {'Ana':'B', 'John':'A+', 'Denise':'A', 'Katy':'A'}
+----
+
+* 항목 **추가**
+
+[source, python]
+----
+grades['Sylvan'] = 'A'
+----
+
+* key가 dictionary에 있는지 테스트
+
+[source, python]
+----
+'John' in greades   # returns True
+'Daniel' in grades  # returns False
+----
+
+* 엔트리 삭제
+
+[source, python]
+----
+del(grades['Ana'])
+----
+
+== Dictionary Operations
+
+[source, python]
+----
+grades = {'Ana':'B', 'John':'A+', 'Denise':'A', 'Katy':'A'}
+----
+
+* 모든 키의 tuple처럼 작동하는 반복 가능 항목을 가져옴
+
+[source, python]
+----
+grades.keys()   # returns ['Ana', 'John', 'Denise', 'Katy']
+----
+
+* 모든 키의 tuple처럼 작동하는 반복 가능 항목을 가져옴
+
+[source, python]
+----
+grades.values()     # returns ['B', 'A+', 'A', 'A']
