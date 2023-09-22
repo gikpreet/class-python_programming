@@ -364,3 +364,4 @@ grades.keys()   # returns ['Ana', 'John', 'Denise', 'Katy']
 [source, python]
 ----
 grades.values()     # returns ['B', 'A+', 'A', 'A']
+----
