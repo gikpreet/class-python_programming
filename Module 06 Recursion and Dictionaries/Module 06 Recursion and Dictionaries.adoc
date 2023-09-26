@@ -244,13 +244,13 @@ def isPalindrom(s):
             if c in 'abcdefghijklmnopqrstuvwxyz':
                 ans = ans + c
         return ans
-    
+
     def isPal(s):
         if len(s) <= 1:
             return True
         else:
             return s[0] == s[-1] and isPal(s[1:-1])
-        
+
     return isPal(toChars(s))
 ----
 
@@ -365,3 +365,92 @@ grades.keys()   # returns ['Ana', 'John', 'Denise', 'Katy']
 ----
 grades.values()     # returns ['B', 'A+', 'A', 'A']
 ----
+
+== `list` vs. `dict`
+
+* list
+** 정렬된 요소의 시퀀스
+** 정수 인덱스로 요소를 찾음
+** 인덱스에는 순서가 있음
+** 인덱스는 정수형
+
+* dict
+** "keys" 와 "values" 쌍
+** 하나 하나씩 값을 찾음
+** 정렬되지 않음이 보장됨
+** 키는 어떤 immutable type이 될 수 있음
+
+== Creating a Dictionary
+
+[source, python]
+----
+def lyrics_to_frequencies(lyrics):
+    myDict = {}
+    for word in lyrics:
+        if word in myDict:
+            myDict[word] += 1
+        else:
+            myDict[word] = 1
+    return myDict
+----
+
+== Using the dictionary
+
+[source, python]
+----
+def most_comon_words(freqs):
+    values = freqs.values()
+    best = max(values)
+    words = []
+    for k in freqs:
+        if freqs[k] == best:
+            words.append(k)
+    return (words, best)
+----
+
+== Leveraging dictionary properties
+
+[source, python]
+----
+def words_often(freqs, minTimes):
+    result = []
+    done = False
+    while not done:
+        temp = most_common_words(freqs)
+        if temp[i] >= minTimes:
+            result.append(temp)
+            for w in temp[0]:
+                del(freqs[w])
+        else:
+            done = True
+    return result
+
+print(words_often(beatles, 5))
+----
+
+== fibonacci 비효율성
+
+----
+fib(n) = fib(n-1) + fib(n-2)
+----
+
+image:./images/image02.png[]
+
+== dictionary를 사용한 fibonacci
+
+[source, python]
+----
+def fib_efficient(n, d):
+    if n in d:
+        return d[n]
+    else:
+        ans = fib_efficient(n-1, d) + fib_efficient(n-2, d)
+        d[n] = ans
+        return ans
+
+d = {1:1, 2:2}
+print(fib_efficient(30, d))
+----
+
+* 이미 계산된 값을 **먼저 찾음**
+* 함수 호출을 통해 **dictionary를 수정**
