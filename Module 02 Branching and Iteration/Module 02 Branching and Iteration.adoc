@@ -1,6 +1,6 @@
 = Module 02: 분기와 반복
 
-== 기억할 것 들
+== 기억 할 것들
 
 * Syntax와 sementics
 * scala objects
@@ -27,7 +27,7 @@ greeting = hi = " " + name
 * Python 문서에 정의된 대로 문자열에 대해 어떤 **작업(operation)**을 수행 +
 silly = hi + " " + name * 3
 
-== INPUT/OUTPUT: print
+== INPUT/OUTPUT: `print`
 
 * 콘솔로 무언가를 내보낼 때 사용
 * 키워드는 **print**
@@ -41,7 +41,7 @@ print("my fav num is", x, ".", "x = ", x)
 print("my fav num is" + x_str + :". " "x = " + x_str)
 ----
 
-== INPUT/OUTPUT: input("")
+== INPUT/OUTPUT: `input("")`
 
 * 따옴표 안이 있는 무엇이든 출력
 * 사용자가 무언가를 입력하고 Enter를 누르는 경우
@@ -53,7 +53,7 @@ text = input("Type anything...")
 print(5 * text)
 ----
 
-* input은 string을 주므로 숫자로 작업할 경우 반드시 변환해야 함
+* input은 **string을 주므로** 숫자로 작업할 경우 반드시 변환해야 함
 
 [source, python]
 ----
@@ -61,7 +61,7 @@ num = int(input("Type a number... "))
 print(5 * num)
 ----
 
-== int, float, string 비교 연산
+== `int`, `float`, `string` 비교 연산
 
 * i와 j는 변수 이름
 * 아래 연산들은 Boolean으로 계산됨
@@ -78,7 +78,7 @@ i != j
 
 == LOGIC OPERATORS ON bools
 
-* a와 b가 변수 이름인 경우 (boolean 값)
+* `a` 와 `b` 가 변수 이름인 경우 (boolean 값)
 
 ----
 not a   -> True if a is False
@@ -151,8 +151,8 @@ else:
     ...
 ----
 
-* <condition>은 True 또는 False 값
-* <condition>이 True일 경우 블록 내의 식을 계산
+* `<condition>` 은 `True` 또는 `False` 값
+* `<condition>` 이 `True` 일 경우 블록 내의 식을 계산
 
 
 == INDENTATION
@@ -198,7 +198,7 @@ image::./images/image04.png[]
 
 image::./images/image05.png[]
 
-== CONTROL FLOW: While Loops
+== CONTROL FLOW: `While` Loops
 
 [source, python]
 ----
@@ -299,12 +299,23 @@ while <condition_1>:
     <expression_c>
 ----
 
+[source, python]
+----
+mysum = 0
+for i in range(5, 11, 2):
+    mysum += i
+    if mysum == 5:
+        break
+        mysum += 1
+print(mysum)
+----
+
 == `for` VS `while` LOOPS
 
 `for` loops
 
-* 반복 회수를 알고 있는 경우
-* `break` 로 반복을 일찍 멈출 수 있음
+* 반복 회수를 **알고 있는 경우**
+* `break` 로 **반복을 일찍 멈출 수 있음**
 * **counter**를 사용
 * `while` 반복을 사용하여 `for` 반복을 재작성 할 수 있음
 
