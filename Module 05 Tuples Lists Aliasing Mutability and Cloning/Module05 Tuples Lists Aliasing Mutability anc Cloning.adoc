@@ -8,7 +8,7 @@
 
 == 오늘
 * 변수 타입: `int, float, bool, string`
-* 'compound data type(복합 데이터 타입)' 소개
+* **compound data type(복합 데이터 타입)** 소개
 ** tuples
 ** lists
 * aliasing 개념
@@ -16,13 +16,14 @@
 * cloning 개념
 
 == tuples
+
 * 순서가 지정된 요소들의 순서로, 여러 타입의 요소가 있을 수 있음
-* 요소 값을 변경할 수 없음. immutable
+* 요소 값을 변경할 수 없음. **immutable**
 * 괄호로 표현
 
 [source, python]
 ----
-te = ()
+te = ()     # empty tuple
 t = (2, "mit", 3)
 t[0]                    -> 2
 (2, "mit", 3) + (5, 6)  -> (2, "mit", 3, 5, 6)
@@ -53,7 +54,7 @@ y = temp
 [source, python]
 ----
 def quotient_and_reminder(x, y):
-    q = x // y
+    q = x // y  # integer division
     r = x % y
     return (q, r)
 (quot, rem) = quotient_and_reminder(4, 5)
@@ -66,10 +67,10 @@ def quotient_and_reminder(x, y):
 [source, python]
 ----
 def get_data(aTuple):
-    nums = ()
+    nums = ()   # empty tuple
     words = ()
     for t in aTuple:
-        nums = nums + (t[0], )
+        nums = nums + (t[0], )  # singleton tuple
         if t[1] not in words:
             words = words + (t[1],)
     min_n = min(nums)
@@ -80,26 +81,27 @@ def get_data(aTuple):
 
 == list
 
-* index를 통해 접근 가능한 순서화된 정보
-* list는 square brakets(대괄호)로 표시됨
-* list에는 element(요소)가 포함됨
+* index를 통해 접근 가능한 **순서화된 일련의** 정보
+* list는 **square brakets(대괄호)**로 표시됨
+* list에는 **element(요소)**가 포함됨
 ** 일반적으로 같은 유형의 요소
 ** 여러 타입의 요소를 추가할 수 있음(일반적이지 않음)
-* list의 요소가 변경될 수 있으므로 list는 변경가능
+* list의 요소가 변경될 수 있으므로 list는 **변경가능(mutable)**
 
 == indices and ordering
 
 [source, python]
 ----
-a_list = []
+a_list = [] # empty list
 L = [2, 'a', 4, [1,2]]
-len(L)
-L[0]
-L[2] + 1
-L[3]
-# L[4]
+len(L)  # 4
+L[0]    # 2
+L[2] + 1    # 5
+L[3]    # [1, 2], 다른 리스트
+L[4]    # error
+
 i = 2
-L[i - 1]
+L[i - 1]    # 'a'
 ----
 
 == 요소 변경
@@ -135,14 +137,15 @@ for i in L:
     total += i
 print(total)
 ----
+
 * 경고
 ** list 요소들은 0에서 len(L) - 1 까지로 인덱싱 됨
 ** `range(n)` 은 0에서 n - 1까지; 반복함
 
 == list의 동작 - add
 
-* `add` L.append(element)로 리스트에 요소를 더함
-* list가 바뀜
+* **add** L.append(element)로 리스트에 요소를 더함
+* list가 **바뀜**
 
 [source, python]
 ----
@@ -159,8 +162,8 @@ L.append(5) -> L is now [2,1,3,5]
 
 == list의 동작 - add
 
-* concatenation(접합)을 사용하여 리스트를 결합할 수 있음 + 연산자는 새 리스트를 만들어 전달
-* L.extend(some_list)를 사용하여 리스트를 변경
+* **concatenation(접합)**을 사용하여 리스트를 결합할 수 있음 + 연산자는 새 리스트를 만들어 전달
+* L.extend(some_list)를 사용하여 리스트를 **변경**
 
 [source, python]
 ----
@@ -172,9 +175,9 @@ L1.extend([0,6])    -> L1은 [2,1,3,0,6]
 
 == list의 동작 - remove
 
-* `del(L[index])` 를 사용하여 지정된 인덱스의 요소를 삭제
-* `L.pop()` 를 사용해 list의 가장 마지막 요소를 삭제, 삭제되는 요소를 반환
-* `L.remove(element)` 를 사용해 지정된 요소를 삭제
+* `del(L[index])` 를 사용하여 **지정된 인덱스**의 요소를 삭제
+* `L.pop()` 를 사용해 list의 가장 **마지막 요소**를 삭제, 삭제되는 요소를 반환
+* `L.remove(element)` 를 사용해 **지정된 요소**를 삭제
 ** 요소를 찾아 제거
 ** 같은 요소가 여러 개일 경우 첫 번째 발견되는 요소를 제거
 ** 요소가 목록에 없으면 오류 발생
@@ -190,9 +193,9 @@ L.pop()         # 0을 반환하고 L이 변경됨 L = [1,3,7]
 
 == list를 string으로 변환, string을 list로 변환
 
-* `list(s)` 를 사용하여 string을 list로 변환, string s 모든 문자열이 L의 요소가 된 list를 반환
-* `s.split()` 을 사용하여 string parameter 따라 문자열을 분할 할 수 있음, parameter가 없으면 space(공백)으로 분할됨
-* `.join(L)` 을 사용하여 문자 목록을 list로 변환, 모든 요소 가이에 문자를 추가하기 위해 " " 로 묶인 문자를 제공할 수 있음
+* `list(s)` 를 사용하여 **string을 list로 변환**, string s 모든 문자열이 L의 요소가 된 list를 반환
+* `s.split()` 을 사용하여 **character parameter 따라 문자열을 분할** 할 수 있음, parameter가 없으면 space(공백)으로 분할됨
+* `.join(L)` 을 사용하여 **character 목록을 list로 변환**, 모든 요소 사이에 문자를 추가하기 위해 " " 로 묶인 문자를 제공할 수 있음
 
 [source, python]
 ----

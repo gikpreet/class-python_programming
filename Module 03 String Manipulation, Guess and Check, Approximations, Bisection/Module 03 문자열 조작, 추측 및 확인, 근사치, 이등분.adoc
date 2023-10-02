@@ -16,14 +16,14 @@
 
 == STRINGS
 
-* 대소문자가 구분되는 문자(characters)의 순서로 생각할 수 있음
+* 대소문자가 구분되는 문자(characters)의 **순서**로 생각할 수 있음
 * ==, >, < 등으로 비교할 수 있음
-* `len()` 은 괄호안의 string의 길이를 알아내는데 사용하는 함수
+* `len()` 은 괄호안의 string의 **길이**를 알아내는데 사용하는 함수
 
 [source, python]
 ----
 s = "abc"
-len(s) -> 3을 계산함
+len(s) -> 3을 연산함
 ----
 
 == STRINGS
@@ -32,7 +32,9 @@ len(s) -> 3을 계산함
 
 [source, python]
 ----
-s = "abc"
+s      = "abc"
+index:   0 1 2 <- index는 항상 0에서 시작함
+index:  -3-2-1 <- 마지막 요소의 index는 항상 -1
 
 s[0] -> "a"를 가져옴
 s[1] -> "b"를 가져옴
@@ -67,8 +69,10 @@ s[4:1:-2]   -> "ec"
 s = "hello"
 
 s[0] = 'y'              -> error
-s = 'y' + s[1:len(s)]   -> 가능함. s는 새 객체
+s = 'y' + s[1:len(s)]   -> 하용함. s는 새 객체에 바인딩 됨
 ----
+
+image:./images/image01.png[]
 
 == for 반복
 
@@ -80,9 +84,10 @@ for var in range(4):    -> var는 값 0, 1, 2, 3 에서 반복
     <expressions>       -> 각각의 var 값과 함께 실행되는 식
 
 for var in range(4, 6): -> var는 값 4, 5 에서 반복
+    <expressions>
 ----
 
-* `range` 는 숫자를 반복하는 방법이지만, for 반복 변수는 숫자 뿐 아니라 모든 값 집합을 반복할 수 있음
+* `range` 는 숫자를 반복하는 방법이지만, for 반복 변수는 숫자 뿐 아니라 **모든 값 집합을 반복**할 수 있음
 
 == STRINGS AND LOOPS
 
@@ -139,10 +144,10 @@ if len(s1) == len(s2):
 
 == GUESS-AND-CHECK (추측과 확인)
 
-* 아래의 프로세스는 `exhaustive enumeration(완결 열거)` 이라고 부름
+* 아래의 프로세스는 **exhaustive enumeration(완결 열거)** 이라고 부름
 ** 문제가 주어졌음...
-** 해결을 위한 값을 추측할 수 있음
-** 값이 올바른지 확인할 수 있음
+** 해결을 위한 **값을 추측**할 수 있음
+** **값이 올바른지 확인**할 수 있음
 ** 해결책을 찾거나 모든 값을 추측할 때 까지 계속 추측
 
 == GUESS-AND-CHECK - cube root
@@ -155,10 +160,24 @@ for guess in range(cube + 1)
         print("Cube root of", cube, "is, guess")
 ----
 
+[source, python]
+----
+cube = 8
+for guess in range(abs(cube)+1):
+    if guess**3 >= abs(cube):
+        break
+if guess**3 != abs(cube):
+    print(cube, 'is not a perfect cube')
+else:
+    if cube < 0:
+        guess = -guess
+    print('Cube root of '+str(cube)+' is '+str(guess))
+----
+
 == APPROXIMATE SOLUTIONS
 
-* "충분한(Good Enough)" 해결
-* 추측으로 시작해서 작은 값을 사용해 증가
+* **"충분한(Good Enough)"** 해결
+* 추측으로 시작해서 **작은 값**을 사용해 증가
 * 만약 `| guess^3^ - cube | >= epsilon` 이면 작은 epsilon을 사용해 추측을 유지
 
 * 증가치를 줄이면   -> 프로그램이 느려짐
@@ -192,7 +211,9 @@ else:
 * 새로운 추측은 중간에 있음
 * 설명을 위해 게임을 해 봅시다.
 
-== BISECTION SEARCH
+image:./images/image02.png[]
+
+== BISECTION SEARCH - cube root
 
 [source, python]
 ----

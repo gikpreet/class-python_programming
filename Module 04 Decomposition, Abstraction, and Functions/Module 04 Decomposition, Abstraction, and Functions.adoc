@@ -31,8 +31,8 @@
 
 * 많은 코드가 반드시 좋은 것은 아니다.
 * 좋은 프로그래머는 기능적인 것의 양으로 측정됨
-* 기능 소개
-* decomposition(분해)와 abstraction(추상화)를 달성하는 메커니즘
+* **함수** 소개
+* **decomposition(분해)**와 **abstraction(추상화)**를 달성하는 메커니즘
 
 == 예 - 프로젝터
 
@@ -42,6 +42,9 @@
 * 해당 입력과 통신할 수 있는 전자장치를 연결
 * 블랙박스는 어떻게든 입력 소스의 이미지를 변환하여 확대하고 벽에 분사
 * **Abstraction idea**: 프로젝터를 사용하기 위해 프로젝터가 어떻게 동작하는지를 알 필요는 없음
+
+== 예 - 프로젝터
+
 * 올림픽을 위한 대형 이미지를 별도의 프로젝터에 대한 작업으로 분해하여 투사
 * 각 프로젝터는 입력을 받아 별도의 출력을 생성
 * 모든 프로젝터가 함께 작동하여 더 큰 이미지를 생성
@@ -119,6 +122,9 @@ def f(x):
     x = x + 1
     print('in f(x): x=', x)
     return x
+
+x = 3
+z = f(x)
 ----
 
 == 변수 범위
@@ -137,21 +143,22 @@ def is_even(i):
     1 % 2 == 0
 ----
 
-* Python은 `return이 없을 경우 None` 을 반환
+* Python은 **return이 없을 경우 None** 을 반환
 * 값이 없음을 나타냄
 
 == `return` vs. `print`
 
 * `return`
-** return은 함수 내부에서 동작
-** 함수 내부에서 실행된 하나의 값만 반환
+** return은 함수 **내부**에서 동작
+** 함수 내부에서 실행된 **하나**의 값만 return
 ** 함수 내부의 코드지만 return문 이후에는 실행되지 않음
 ** 함수 호출자에게 제공되는 값
+
 * `print`
-** print는 함수 외부에서 사용
-** 함수 내부에서 많은 print가 실행될 수 있음
+** print는 함수 **외부**에서 사용
+** 함수 내부에서 **많은** print가 실행될 수 있음
 ** 함수 내부의 코드로 print후의 코드도 실행됨
-** 연관된 값들을 콘솔에 출력함
+** 연관된 값들을 콘솔에 **출력**함
 
 == arguments로서의 함수
 * argument로 어떠한 타입도 가능함, 심지어 함수도 가능
@@ -189,16 +196,16 @@ image::./images/image04.png[]
 == 범위 예제
 
 * 함수 내부에서, 외부에 선언된 변수에 **접근 가능**
-* 함수 내부에서, 외부에 선언된 변수의 값을 **변경할 수 없음** - global variable(전역 변수)를 사용할 수 있으나 권장하지 않음
+* 함수 내부에서, 외부에 선언된 변수의 값을 **변경할 수 없음** - **global variable(전역 변수)**를 사용할 수 있으나 권장하지 않음
 
 [source, python]
 ----
 def f(y):
-    x = 1
+    x = 1   # x는 f의 범위에서 재정의 됨
     x += 1
     print(x)
 
-x = 5
+x = 5       # 다른 x 객체
 f(x)
 print(x)
 ----
@@ -206,11 +213,21 @@ print(x)
 [source, python]
 ----
 def g(y):
-    print(x)
-    print(x + 1)
+    print(x)        # g 내의 x 객체
+    print(x + 1)    # g 내의 x 객체
+
+x = 5   # g 내부의 x는 함수 g를 호출한 범위에서 선택됨
+g(x)
+print(x)
+----
+
+[source, python]
+----
+def h(y):
+    x += 1
 
 x = 5
-g(x)
+h(x)
 print(x)
 ----
 
@@ -237,6 +254,18 @@ def g(x):
 x = 3
 z = g(x)
 ----
+
+image:./images/image08.png[]
+
+image:./images/image09.png[]
+
+image:./images/image10.png[]
+
+image:./images/image11.png[]
+
+image:./images/image12.png[]
+
+image:./images/image13.png[]
 
 == Decomposition & Abstraction
 
