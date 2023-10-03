@@ -45,3 +45,40 @@ image:./images/image02.png[]
 * Integration testing
 ** **전반적인 프로그램**이 작동하는가?
 ** 이 일을 서두르는 경향이 있다
+
+== 테스트 접근 방식
+
+* 문제의 자연스러운 경계에 대한 직관적인 접근
+
+[source, python]
+----
+def is_bigger(x, y):
+    """ Assumes x and y are ints
+    Returns True if y is less than x, else False """
+----
+
+** 자연스럽게 경계를 구분할 수 있는가?
+* 자연스러운 파티션이 없으면 **랜덤 테스트(Random Test)**를 수행할 수 있음
+** 코드가 올바를 확률은 테스트의 양과 비례함
+** 아래는 더 나은 방법
+* 블랙박스(Black Box) 테스트
+** Specification을 통해 경로를 탐색
+* 유리상자(Glass Box) 테스트
+** 코드를 통해 경로를 탐색
+
+== Black box Testing
+
+[source, python]
+----
+def sqrt(x, eps):
+    """ Assumes x, eps floats, x >= 0, eps > 0
+    Returns res such that -x-eps <= res*res <= x+ eps """
+----
+
+* 코드를 **보지 않고** 디자인
+* 코드를 구현한 사람의 **편견**을 피하기 위해 다른 사람이 수행할 수 있음
+* 구현이 변경되면 테스트를 재사용할 수 있음
+* Specification을 통해 경로를 탐색
+** 다양한 파티션에 테스트 케이스를 구축
+** 경계 조건(빈 목록, 싱글턴 목록, 큰수, 작은 수 등)을 고려
+
