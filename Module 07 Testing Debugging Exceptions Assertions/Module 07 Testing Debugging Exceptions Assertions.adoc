@@ -82,3 +82,16 @@ def sqrt(x, eps):
 ** 다양한 파티션에 테스트 케이스를 구축
 ** 경계 조건(빈 목록, 싱글턴 목록, 큰수, 작은 수 등)을 고려
 
+== Black box Testing
+
+[source, python]
+----
+def sqrt(x, eps):
+    """ x, eps는 부동 소수점, x >= 0. eps > 0 이라고 가정
+    x - eps <= res * res <= x + eps를 return. """
+----
+
+
+
+    
+
