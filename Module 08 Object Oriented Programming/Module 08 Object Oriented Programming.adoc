@@ -57,7 +57,7 @@ image:./images/image01.png[] +
 * 클래스를 사용하면 코드를 쉽게 재사용할 수 있음
 ** 많은 python 모듈이 새 클래스를 정의
 ** 각 클래스에는 별도의 환경이 있음(함수 이름에 충돌 없음)
-* Inhertance를 통해 subclass는 superclass의 선택된 부분을 재정의하거나 확장할 수 있음
+** Inhertance를 통해 subclass는 superclass의 선택된 부분을 재정의하거나 확장할 수 있음
 
 == 클래스를 사용하여 타입 생성 및 사용
 
@@ -69,4 +69,83 @@ image:./images/image01.png[] +
 * 클래스 사용
 ** 객체의 새로운 인스턴스 생성
 ** 인스턴스에 대한 작업 수행
-** 예) `L=[1,2]` 및 `len(L)`
+** _예)_ `L=[1,2]` _및_ `len(L)`
+
+== 타입 정의
+
+* `class` 키워즈를 사용하여 새 타입 정의
+
+[source, python]
+----
+class Coordinate(object):
+"""   ^ name/type  ^ class parent """
+    # defile attribute here
+----
+
+* `def` 와 비슷하게, 들여쓰기 된 코드에 쓴 statement는 **클래스 정의**의 일부가 된다
+* `object` 는 'Coordnate` 가 Python 객체이고 모든 속성을 **상속(Inherits)** 한다는 의미
+** `Coordinate` 는 `object` 의 서브클래스
+** `object` 는 `Coordinate` 의 수퍼클래스
+
+== 속성(Attribute) 란?
+
+* 클래스에 **"속하는"** 데이터 및 프로시저
+* **데이터 속성**
+** 클래스를 구성하는 객체로서의 데이터
+** 예로, Coordinate는 두 개의 숫자로 구성됨
+* **메소드(procedual attribute)** 
+** 클래스에서만 동작하는 함수로 생각할 것
+** 객체와 상호작용 하는 방법
+** 예로, 두 Coordinate 객체 사이의 거리를 정의할 수는 있지만 두 list 개체 사이의 거리는 의미가 없음
+
+== 클래스의 인스턴스를 생성하는 방법 정의
+
+* 먼저 객체의 인스턴스를 생성하는 방법을 정의
+* 일부 데이터 속성을 초기화하려면 `__init__` 라는 특수 메소드 사용
+
+image:./images/image02.png[]
+
+== 클래스 인스턴스의 실제 생성
+
+[source, python]
+----
+c = Coordindate(3, 4)
+origin = Coordinate(0, 0)
+print(c.x)
+print(origin.x)
+----
+
+* 인스턴스의 데이터 속성은 **인스턴스 변수(instance variable)** 이라고 부름
+* `self` 를 위한 argument는 제공하지 않음, Python은 자동으로 이를 수행
+
+== 메소드란?
+
+* 절차적 속성(procedual attribute), **해당 클래스를 위해서만 동작하는 함수**
+* Python은 항상 객체를 첫 번째 argument로 전달함
+** 첫 번째 argument 이름으로 `self` 를 사용하는 것이 관례
+* `"."` **연산자**는 모든 속성에 액세스하는데 사용
+** 객체의 데이터 속성
+** 객체의 메소드
+
+== `Coordinate` 클래스를 위한 메소드 정의
+
+[source, python]
+----
+class Coordinate(object):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def distance(self, other):
+        x_diff_sq = (self.x-other.x)**2
+        y_diff_sq = (self.y-other.y)**2
+        return (x_diff_sq + y_diff_sq)**0.5
+----
+
+* `self` 및 `+.` 표기법을 제외하면 모든 메소드는 함수처럼 동작함(파라미터 사용, 동작 수행, return)
+
+== 메소드 사용
+
+[source, python]
+----
+def distance(self, other):
+    
