@@ -148,4 +148,20 @@ class Coordinate(object):
 [source, python]
 ----
 def distance(self, other):
+    # code here
+----
+
+클래스 사용:
+
+* 기존 방식
++
+image:./images/image03.png[]
++
+* 같은 방법
++
+image:./images/image04.png[]
++
+
+
+
     
