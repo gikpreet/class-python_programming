@@ -1,0 +1,18 @@
+= Object Oriented Programming
+
+== Objects
+
+* Python은 많은 다른 종류의 데이터를 제공함
+
+[source, python]
+----
+1234 3.14159 "Hello" [1, 5, 7, 11, 13]
+{"CA": "California", "MA": "Massachusetts"}
+----
+
+* 각각의 데이터는 객체(object)이고, 모든 객체는 아래의 것들을 가짐:
+** 타입
+** 내부적 데이터 표현(primitive 또는 composite)
+* 객체는 타입의 **인스턴스**
+** `1 2 3 4` 는 `int` 의 인스턴스
+** `"hello"` 는 string의 인스턴스
