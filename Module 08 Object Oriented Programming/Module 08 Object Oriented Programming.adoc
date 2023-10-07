@@ -162,6 +162,110 @@ image:./images/image03.png[]
 image:./images/image04.png[]
 +
 
+== 객체의 표현 print
 
+[source, python]
+----
+>>> c = Coordinate(3, 4)
+>>> print(c)
+<___main___c.Coordinate object at 0x7fa918510488>
+----
 
-    
+* 기본적으로 객체 정보를 print하지 않음
+* 클래스에 `\\__str__` 메소드 정의
+* Python은 클래스 객체에서 `print` 와 함께 사용될 때 `\\__str__` 메소드를 호출함
+* `Coordinate`` 객체를 print할 때 표시할 객체를 선택
+** 반드시 string 반환
+
+[source, python]
+----
+>>> print(c)
+<3, 4>
+----
+
+=== print 메소드 정의
+
+[source, python]
+----
+class Coordinate(object):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        def distance(self, other):
+        x_diff_sq = (self.x-other.x)**2
+        y_diff_sq = (self.y-other.y)**2
+        return (x_diff_sq + y_diff_sq)**0.5
+    def __str__(self):
+        return "<"+str(self.x)+","+str(self.y)+">"
+----
+
+== 타입과 클래스
+
+* 객체 인스턴스의 타입을 알 수 있음
+
+[source, python]
+----
+>>> c = Coordinate(3, 4)
+>>> print(c)    #
+<3, 4>
+>>> print(type(c))
+<class __main__.Coordinate>
+----
+
+* 그러면 아래가 말이 된다
+
+[source, python]
+----
+>>> print(Coordinate)
+<class __main__.Coordinate>
+>>> print(type(Coordinate))
+<type 'type'>
+----
+
+* `isinstance()` 를 사용하여 객체가 `Coordinate` 타입인지 체크
+
+[source, python]
+----
+>>> print(isinstance(c, Coordinate))
+True
+----
+
+== 특별한 연산자
+
+* +. -. ==, <, >, len(), print, 그외 많은 연산자
++
+https://docs.python.org/3/reference/datamodel.html#basic-customization
++
+* `print` 처럼, 이 작업들은 클래스에서 오버라이드 할 수 있음
+* 앞 뒤로 두 언더스코어(__)를 사용하여 정의
+
+[source, python]
+----
+__add__(self, other) # self + other
+__sub__(self, other) # self - other
+__eq__(self, other) # self == other
+__lt__(self, other) # self < other
+__len__(self) # len(self)
+__str__(self) # print self
+----
+.. 그외 기타..
+
+== 예제: 분수(Fractions)
+
+* 숫자를 분수로 표현하는 새로운 타입 생성
+* 내부 표현은 두 개의 정수
+** 분자(numerator)
+** 분모(denumerator)
+* Faction 객체 인터페이스(메소드, 상호 작용 방법)
+** 더하기, 빼기
+** print 표현, 부동 소수점 변환
+** 분수 반전
+
+== OOP의 힘
+
+* 공유하는 객체를 함께 묶음
+** 공통 속성, 및
+** 해당 속성에 대해 작동하는 절차
+* 객체를 구현하는 방법과 객체를 사용하는 방법을 구별하기 위해 추성화를 사용
+* 다른 객체 클래스의 동작을 상속하는 객체 추상화 계층 구축
+* Python의 기본 클래스 위에 자체적인 객체 클래스 생성
