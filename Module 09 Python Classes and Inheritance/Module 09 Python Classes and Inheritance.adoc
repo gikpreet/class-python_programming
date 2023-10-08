@@ -249,3 +249,6 @@ class Animal(object):
 ** class `object` 는 Python의 기본 동작(operation)들을 구현
 
 == Inheritance: Subclass
+
+image:./images/image06.png[]
+
