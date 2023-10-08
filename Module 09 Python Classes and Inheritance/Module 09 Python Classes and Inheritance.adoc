@@ -353,10 +353,36 @@ class Rabbit(Animal):
 
 == 정의된 type에서 작업
 
+image:./images/image08.png[]
+
+* 두 `Rabbit` 인스턴스 간의 **+ 연산자** 정의
+** `r4 = r1 + r2` 와 비슷한 형식의 동작 정의, r1과 r2는 `Rabbit` 인스턴스
+** `r4` 는 age가 0인 새 `Rabbit` 인스턴스
+** `r4` 는 `self` 를 parent로 가지고 `other` 를 다른 부모로 가짐
+** `__init__` 에서, **parent1과 parent2는 Rabbit 타입**
+
+== 두 `Rabbit` 의 비교를 위한 특별한 메소드
+
+* 두 parents를 가지고 있을 때 두 토끼가 같은지 결정
+
 [source, python]
 ----
-def __add__(self, other):
-    # 이 클래스와 같은 타입의 객체 반환
-    return Rabbit(0, self, other)
+def __eq__(self, other):
+    parents_same =  self.parent1.rid == other.parent1.rid and self.parent2.rid == other.parent2.rid     # boolean
+    parents_opposite = self.parent2.rid == other.parent1.rid and self.parent1.rod == other.parent2.rid   # boolean
+    return parents_same or parents_opposite
 ----
 
+* ID가 고유하므로 부모의 ID를 비교(클래스 var로 인해)
+* 개체를 직접 비교할 수는 없음
+** 예를 들어. self.parent1 == other.parent1 사용
+** None에서 호출할 때까지 \\__eq__ 메서드를 계속해서 호출하고 parent1.None을 수행하려고 하면 AttributeError를 발생시킴
+
+== Object Oriented Programming
+
+** 새 **collections of data**를 생성
+** 정보를 **조직(organzie)**
+** 작업을 **구분(division)**
+** **일관된** 방식으로 정보에 접근
+** 복잡성 **계층** 추가
+** 함수와 마찬가지로 클래스는 프로그래밍에서 **분해(decomposition)** 및 **추상화(abstraction)**를 위한 메커니즘
