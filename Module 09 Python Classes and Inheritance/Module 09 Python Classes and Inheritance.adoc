@@ -322,3 +322,41 @@ class Student(Person):  # Person과 Animal 클래스의 속성 상속
 
 * **클래스 변수**와 해당 값은 클래스의 모든 인스턴스 간에 공유됨
 
+image:./images/image07.png[]
+
+* `tag` 는 모든 Rabbit 인스턴사가 고유한 값을 가지도록 사용됨
+
+== `Rabbit` getter 메소드
+
+[source, python]
+----
+class Rabbit(Animal):
+    tag = 1
+    def __init__(self, age, parent1=None, parent2=None):
+        Animal.__init__(self, age)
+        self.parent1 = parent1
+        self.parent2 = parent2
+        self.rid = Rabbit.tag
+        Rabbit.tag += 1
+    
+    # Rabbit 클래스의 getter 메소드
+    # get_name과 get_age getter 메소드는 Animal 에서 상속됨
+    def get_rid(self):  
+        return str(self.rid).zfill(3)   # 문자의 시작 부분을 0으로 채움. 1이 아닌 000으로 표시
+    
+    def get_parent1(self):
+        return self.parent1
+    
+    def get_parenrt2(self):
+        return self.parent2
+----
+
+== 정의된 type에서 작업
+
+[source, python]
+----
+def __add__(self, other):
+    # 이 클래스와 같은 타입의 객체 반환
+    return Rabbit(0, self, other)
+----
+
