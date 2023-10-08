@@ -72,3 +72,47 @@ c2 = Coordinate(3, 4)
 image:./images/image01.png[]
 
 image:./images/image02.png[]
+
+== 겍체 그룹은 속성을 가짐
+
+* **데이터 속성(Data attribute)**
+** 객체의 데이터를 어떻게 표현할 것인가?
+** **데이터 속성이란 무엇인가?**
+** _좌표를 위해서: x와 y 값_
+** _동물을 위해서: 나이, 이름_
+* **절차적 속성(Procedual attribute)** (behavior/operations/**methods**/)
+** 객체와 어떻게 상호작용 할 것인가?
+** _좌표를 위해서: 두 좌표간의 거리 찾기_
+** _동물을 위해서: 소리 만들기_
+
+== 클래스 정의
+
+image:./images/image03.png[]
+
+== getter와 setter 메소드
+
+[source, python]
+----
+class Animal(object):
+    def __init__(self, age):
+        self.age = age
+        self.name = None
+    
+    def get_age(self):
+        return self.age
+
+    def get_name(self):
+        return self.name
+    
+    def set_age(self, newage):
+        self.age = newage
+    
+    def set_name(self, newname=""):
+        self.name = newname
+    
+    def __str__(self):
+        return "animal: " + str(self.name) + ": " + str(self.age)
+----
+
+* **getter와 setter**는 클래스 외부에서 데이터 속성에 액세스 할 수 있어야 함
+
