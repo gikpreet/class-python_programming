@@ -252,3 +252,73 @@ class Animal(object):
 
 image:./images/image06.png[]
 
+* `speak()` 로 새 기능 추가
+** 타입 `Cat` 의 새 인스턴스는 새 메소드를 호출할 수 있음
+** `Animal` 타입 인스턴스에서 `Cat` 의 새 메소드를 호출하면 오류 발생
+* `\\__init__` 은 유실된 것이 아니라, `Animal` 버전을 사용
+
+== 어떤 메소드를 사용해야 하는가?
+
+* subclass는 superclass와 **같은 이름을 가진 메소드**를 가질 수 있음
+* 클래스 인스턴스의 경우 **현재 클래스 정의**에서 메소드 이름을 찾음
+* 찾을 수 없는 경우 **위쪽 계층 구조**에서 메소드 이름을 찾음(부모, 조부모 등)
+* 해당 메소드 이름으로 찾은 계층 구조의 첫 번째 메소드를 사용
+
+[source, python]
+----
+class Person(Animal):   # parent class가 Animal
+    def __init__(self, name, age):
+        Animal.__init__(self, age)  # Animal 생성자 호출
+        self.set_name(name)         # Animal의 메소드 호출
+        self.friends = []           # 새 데이터 속성 추가
+    
+    def get_friends(self):          # 새 메소드
+        return self.friends
+    
+    def add_friends(self, fname):   # 새 메소드
+        if fname not in self.friends:
+            self.friends.append(fname)
+    
+    def speak(self):                # 새 메소드
+        print("hello")
+    
+    
+    def age_diff(self, other):      # 새 메소드
+        diff = self.age - other.age
+        print(abs(diff), "year difference")
+    
+    def __str__(self):              # Animal의 __str__ 메소드 오버라이드
+        return "person: " + str(self.name) + ": " + str(self.age)
+----
+
+[source, python]
+----
+import random   # random 클래스의 메소드를 가져옴
+
+class Student(Person):  # Person과 Animal 클래스의 속성 상속
+    def __init__(self, name, age, major=None):  
+        Person.__init__(self, name, age)
+        self.major = major      # 새 데이터 추가
+    
+    def change_major(self, major):
+        self.major = major
+    
+    def speak(self):
+        r = random.random()     # python 문서에서 random 클래스 사용법을 찾아볼 것, random() 메소드는 [0, 1] 사이의 float을 반환
+        if r < 0.25:
+            print("i have homework")
+        elif 0.25 <= r < 0.5:
+            print("i need sleep")
+        elif 0.5 <= r < 0.75:
+            print("i should eat")
+        else:
+            print("i am watching TV")
+    
+    def __str__(self):
+        return "student: " + str(self.name) + ": " + str(self.age) + ": " + str(self.major)
+----
+
+== `Rabbit` 서브 클래스
+
+* **클래스 변수**와 해당 값은 클래스의 모든 인스턴스 간에 공유됨
+
