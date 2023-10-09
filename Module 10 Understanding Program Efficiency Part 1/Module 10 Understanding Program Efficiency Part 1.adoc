@@ -327,5 +327,60 @@ image:./images/image03.png[]
 ** indirection
 ** 다른 객체를 참조
 +
-imageL./images/image04.png[]
+image:./images/image04.png[]
+
+
+== **정렬된** list의 선형 탐색
+
+[source, python]
+----
+def search(L, e):
+    for i in range(len(L)):
+        if L[i] == e:
+            return True
+        if L[i] > e:
+            return False
+    return False
+----
+
+* `e` 보다 큰 숫자에 도달할 때 까지만 찾음
+* `O(len(L)` 루프의 경우 `e == L[i]` 테스트를 위해 * `O(1)` 
+* 전체 복잡도는 `O(n) - 여기서 n은 len(L)`
+* _참고:_ 증가 순서는 동일하지만 실행 시간은 두 가지 검색 방법에 따라 다를 수 있음
+
+== 선형 복잡도
+
+* 요소가 존재하는지 확인하기 위해 목록을 순서대로 검색
+* 십진수로 구성된 것으로 가정하는 string의 문자 추가
 +
+[source, python]
+----
+def addDigits(s):
+    val = 0
+    for c in s:
+        val += int(c)
+    return val
+----
++
+* `O(len(s))`
+
+== 선형 복잡도
+
+* 복잡성은 반복 횟수에 따라 달라짐
++
+[source, python]
+----
+def fact_iter(n):
+    prod = 1
+    for i in range(1, n + 1):
+        prod *= i
+    return prod
+----
++
+* 루프 횟수는 n
+* 루프 내부의 작업 수는 상수 (이 경우 3 – i 설정, 곱하기, prod set)
+** `O(1 + 3n + 1) = O(3n + 2) = O(n)`
+* 전체적으로 `O(n)`
+
+
+
