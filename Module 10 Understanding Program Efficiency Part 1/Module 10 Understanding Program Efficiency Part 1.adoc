@@ -320,3 +320,5 @@ def linear_search(L, e):
 ** `i` 번째 요소는
 *** base + 4 * i
 
+image:./images/image03.png[]
+
