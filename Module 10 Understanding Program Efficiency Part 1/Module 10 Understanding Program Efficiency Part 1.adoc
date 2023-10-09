@@ -170,5 +170,63 @@ def search_for_elmt(L, e):
 
 == 명확한 절차 vs. `O()`
 
+[source, python]
+----
+def fact_iter(n):
+    """ n은 정수 > =0 으로 가정 """
+    answer = 1
+    while n > 1:
+        answer *= n     # answer = answer * n
+        n -= 1          # temp = n - 1, n = temp
+    return answer
+----
 
+* factorial 계산
+* 단계의 수: 1 + 5n + 1
+* 최악의 경우 점근적 복잡성:
+** 덧셈 상수 무시
+** 곱셈 상수 무시
 
+== O(n)이 측정하는 것
+
+* 문제(입력)의 크기가 커짐에 따라 필요한 시간이 어떻게 늘어나는지 설명함
+* 따라서 알고리즘을 계산하는데 필요한 동작의 수를 표현하면 문제의 수가 커질수록 점근적인 동작을 알 수 있음
+* 따라서 용어의 합에서 가장 빠르게 성장하는 용어에 중점
+* 입력 크기가 증가함에 따라 필요한 시간이 얼마나 빨리 증가하는지 알고자 곱셈 상수 무시
+
+== 단순화 예
+
+* 상수와 곱셈 요소 삭제
+* **지배적 항(dominant terms)**에 초점
++
+++++
+O(n<sup>2</sup>) : n<sup>2</sup> + 2n + 2 <br />
+O(n<sup>2</sup>) : n<sup>2</sup> + 10000n + 3<sup>1000</sup> <br />
+O(n) : log(n) + n + 4 <br />
+O(n log n) : 0.0001 * n * log(n) + 300n <br />
+O(3<sup>n</sup>) : 2n<sup>30</sup> + 3<sup>n</sup>
+++++
+
+== 증가 기준(Order of growth) 유형
+
+image:./images/image02.png[]
+
+== 프로그램과 복잡성 분석
+
+* 복잡성 클래스 **결합**
+** 함수 내부의 명령문 분석
+** 몇 가지 규칙을 적용하고 주요 용어에 중점을 둠
+* `O()` 에 대한 덧셈의 법칙:
+** 순차(sequtial) statement와 함께 사용됨 
+** `O(f(n))	+ O(g(n))` 은 `O(f(n) + g(n))`
+** 예제
+
+[source, python]
+----
+for i in range(n):
+    print('a')
+for i in range(n * n):
+    print('b"')
+----
+
+는 O(n) + O(n * n) = O(n + n^2) = O(n2) <- 지배적 항(dominant term)이기 때문
