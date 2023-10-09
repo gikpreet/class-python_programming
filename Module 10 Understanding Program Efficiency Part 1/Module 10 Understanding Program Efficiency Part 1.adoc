@@ -326,3 +326,6 @@ image:./images/image03.png[]
 * list가 다양한 타입으로 이루어진 경우
 ** indirection
 ** 다른 객체를 참조
++
+imageL./images/image04.png[]
++
