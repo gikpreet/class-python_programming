@@ -382,5 +382,86 @@ def fact_iter(n):
 ** `O(1 + 3n + 1) = O(3n + 2) = O(n)`
 * 전체적으로 `O(n)`
 
+== Nested Loops
 
+* 단순한 반복은 선형 복잡도를 가짐
+* 내부에 반복이 있는 반복(포함된 반복)의 경우는?
 
+== 2차 복잡도
+
+* 한 list가 두 번째 list의 하위 집합인지 확인.
+** 즉, 첫 번째 list의 모든 요소가 두 번째 list에 나타나는지 확인(중복이 없다고 가정)
+
+[source, python]
+----
+def isSubset(L1, L2):
+    for e1 in L1:
+        matched = False
+        for e2 in L2:
+            if e1 == e2:
+                matched = True
+                break
+        if not matched:
+            return False
+    return True
+----
+
+== 2차 복잡도
+
+[source, python]
+----
+def isSubset(L1, L2):
+    for e1 in L1:               # 외부 반복은 len(L1)번 실행됨
+        matched = False
+        for e2 in L2:           # 각 반복은 내부 반복을 len(L2)번 반복하며, 횟수는 일정함
+            if e1 == e2:
+                matched = True
+                break
+        if not matched:         # O(len(L1) * len(L2))
+            return False
+    return True                 # L1과 L2 길이가 같고, L2에 L1의 요소가 하나도 없는 경우 최악
+                                # O(len(L1)^2)
+----
+
+== 2차 복잡도
+
+두 list의 교차점을 찾고, 각 요소가 한 번만 나타나는 list를 반환
+
+[source, python]
+----
+def intersect(L1, L2):
+    tmp = []
+    for e1 in L1:               # 첫 번째 반복은 len(L1) * len(L2) 단계를 가짐
+        for e2 in L2:           # 두 번째 반복은 len(L1) 단계를 가짐
+            if e1 == e2:
+                tmp.append(e1)  # 목록의 요소가 len(L1) 단계를 수행할 수 있는지 확인
+    res = []
+    for e in tmp:
+        if not (e in res):
+            res.sppend(e)       # 목록의 길이가 거의 같다고 가정하면
+    return res                  # O(len(L1)^2)
+----
+
+== O() for Nested Loop
+
+[source, python]
+----
+def g(n):
+    """ n >= 0 이라고 가정 """
+    x = 0
+    for i in range(n):
+        for j in range(n):
+            x += 1
+    return x
+----
+
+* n^2^을 비효율적으로 계산
+* 중첩 루프를 다룰 때 범위를 살펴봐야 함
+* 충첩 루프, 각각 n 번 반복
+* `O(n^2^)`
+
+== This time and next time
+
+* 루프 및 중첩 루프의 예
+* 선형 및 2차 복잡성 알고리즘 생성
+* 다음 번: 다양한 복잡도 클래스 각각의 예
