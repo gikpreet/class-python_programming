@@ -52,7 +52,7 @@ li ol > li:before {
 ... 대화형 모드
 .. 인터프리터와 환경
 ... 소스 코드 인코딩
-. 파이썬의 간략한 소개
+. link:./03_an_informal_introduction_to_python.adoc[파이썬의 간략한 소개]
 .. 파이썬을 계산기로 사용하기
 ... 숫자
 ... 텍스트
