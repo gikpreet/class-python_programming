@@ -43,7 +43,6 @@ flowchart TD
 == Knowledge의 종류
 * **선언적 knowledge(declarative knowledge)**는 "사실의 상태"
 * 명령적 knowlegde(imparative knowledge)는 "레시피" 또는 "how-to"
-** 경품에 응모
 ** IDE(Integrated Development Environment)를 열고
 ** 1에서 n 사이의 무작위 숫자를 선택
 ** 번호를 확인
