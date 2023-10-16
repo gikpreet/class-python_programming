@@ -46,13 +46,13 @@ print("my fav num is" + x_str + :". " "x = " + x_str)
 * 따옴표 안이 있는 무엇이든 출력
 * 사용자가 무언가를 입력하고 Enter를 누르는 경우
 * 해당 값을 변수에 할당
-
++
 [source, python]
 ----
 text = input("Type anything...")
 print(5 * text)
 ----
-
++
 * input은 **string을 주므로** 숫자로 작업할 경우 반드시 변환해야 함
 
 [source, python]
@@ -183,7 +183,7 @@ print("thanks!")
 x = float(input("Enter a number for x: "))
 y = float(input("Enter a number for y:" ))
 
-if x = y:
+if x == y:
     print("x and y are equal")
     if (y != 0):
         print("therefore, x / y is", x / y)
