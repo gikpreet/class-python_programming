@@ -87,6 +87,7 @@ a and b -> True if both are True
 a or b  -> True if either or both are True
 ----
 
+[%header, cols="1,1,1,1", width=50%]
 |===
 |A | B | A and B | A or B
 
