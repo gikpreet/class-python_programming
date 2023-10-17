@@ -58,7 +58,7 @@ li ol > li:before {
 ... 텍스트
 ... 리스트
 .. 프로그래밍으로의 첫걸음
-. 기타 제어 흐름 도구
+. link:./04_more_control_flow_tools.adoc[기타 제어 흐름 도구]
 .. if 문
 .. for 문
 .. range() 함수
