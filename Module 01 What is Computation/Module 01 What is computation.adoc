@@ -5,9 +5,9 @@
 * 강의 정보
 * Computation 이란 무엇인가
 * Python 기본
-* Mathetatical Operation
+* Mathematical operations
 * Python 변수와 타입
-* 참고: ** 슬라이드와 코드 파일을 강의전에 살펴볼 것
+* 참고: 슬라이드와 코드 파일을 강의전에 살펴볼 것
 ** 강의 전에 다운로드
 ** 강의중에 코드를 반드시 실행해 볼 것
 ** 실습을 반드시 수행하고 컴퓨터에서 답을 얻을 것
@@ -57,7 +57,7 @@ flowchart TD
 
 [%header, cols="1,1,1,2", width=60%]
 |===
-|g|g * g|x / g|(g + x / g) / 2
+|g|g * g |x / g |(g + x / g) / 2
 |3|9|16 / 3|4.17
 |4.17|17.36|3.387|4.0035
 |4.0035|16.0277|3.997|4.000002
@@ -77,9 +77,9 @@ flowchart TD
 == 기계로서의 컴퓨터
 
 * 기계적 프로세스에서 레시피를 캡처하는 방법
-** **고정 프로그램(fixed program)** 컴퓨터
-*** 계산기
-** **저장된 프로그램(Stored program)** 컴퓨터
+* **고정 프로그램(fixed program)** 컴퓨터
+** 계산기
+* **저장된 프로그램(Stored program)** 컴퓨터
 ** 명령을 저장하고 실행
 
 == Basic machine architecture
@@ -94,7 +94,7 @@ image:./images/image01.png[]
 2. 간단한 테스트
 3. 데이터 이동
 
-* 특별현 프로그램(인터프리터) **각 명령(insturction)을 순서대로 실행**
+* 특별한 프로그램(인터프리터)는 **각 명령(insturction)을 순서대로 실행**
 ** 테스트를 사용하여 시퀀스를 통해 제어 흐름을 변경
 ** 완료되면 중지
 
@@ -143,7 +143,7 @@ image:./images/image01.png[]
 ** 영어: `"Flying planes can be dangerous"` 에는 많은 의미가 있을 수 있음
 ** 프로그래밍 언어: 단 하나의 의미를 가지지만 프로그래머가 의도한 것이 아닐 수도 있음
 
-== 문제 발생 부분
+== 문제가 발생하는 부분
 
 * **Syntatic 오류**
 ** 흔하고 쉽게 잡힐 수 있음
@@ -158,10 +158,10 @@ image:./images/image01.png[]
 == Python 프로그램
 
 * **프로그램**은 일련의 정의와 명령
-** 연산(evaluated) 정의
+** 계산(evaluated) 정의
 ** 쉘(shell)에서 Python 인터프리터가 실행하는 명령
 * **명령(commands - statement)**은 인터프리터에게 어떤 일을 하도록 지시함
-** shell에 직접 입력하거나 shell로 읽어 들여 연산(evaluation)할 수 있는 파일에 저장할 수 있음
+** shell에 직접 입력하거나 shell로 읽어 들여 계산(evaluation)할 수 있는 파일에 저장할 수 있음
 
 == 객체 (Objects)
 
@@ -216,7 +216,7 @@ In  [12]: print(3+2)
 * 단순 구문의 syntax +
   `<object> <operator> <object>`
 
-== float와 int 작업
+== float와 int 동작
 
 * `i + j` -> **합(sum)** 결과 타입: 모두가 정수이면 int, 하나라도 float면 float
 * `i = j` -> **차(difference)** 결과 타입: 모두가 정수이면 int, 하나라도 float면 float
@@ -224,7 +224,7 @@ In  [12]: print(3+2)
 * `i / j` -> **몫(division)** 결과 타입:  float
 
 * `i % j` -> **나머지(remainder)**
-* `i ** j` -> `i`의 `j` **제곱(power)**
+* `i \** j` -> `i`의 `j` **제곱(power)**
 
 == 단순 연산
 
