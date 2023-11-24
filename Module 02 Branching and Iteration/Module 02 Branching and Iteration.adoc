@@ -18,14 +18,22 @@
 
 * 문자, 특수 문자, 빈칸, 숫자
 * **따옴표(quotation marks) 또는 작은 따옴표(single quotes)**로 싸임 +
+[source, python]
+----
 h1 = "hello there"
+----
 * 문자열 **접합(concatenate)** +
+[source, python]
+----
 name = "ana"
 greet = hi + name
 greeting = hi = " " + name
-
+----
 * Python 문서에 정의된 대로 문자열에 대해 어떤 **작업(operation)**을 수행 +
+[source, python]
+----
 silly = hi + " " + name * 3
+----
 
 == INPUT/OUTPUT: `print`
 
@@ -43,7 +51,7 @@ print("my fav num is" + x_str + :". " "x = " + x_str)
 
 == INPUT/OUTPUT: `input("")`
 
-* 따옴표 안이 있는 무엇이든 출력
+* 따옴표 안에 있는 무엇이든 출력
 * 사용자가 무언가를 입력하고 Enter를 누르는 경우
 * 해당 값을 변수에 할당
 +
@@ -53,8 +61,8 @@ text = input("Type anything...")
 print(5 * text)
 ----
 +
-* input은 **string을 주므로** 숫자로 작업할 경우 반드시 변환해야 함
-
+* input은 **string을 return 하므로** 숫자로 동작에 참여시키는 경우 반드시 변환해야 함
++
 [source, python]
 ----
 num = int(input("Type a number... "))
@@ -93,7 +101,7 @@ a or b  -> True if either or both are True
 
 |True |True |True |True
 |True |False |False |True
-|False|False |False |True
+|False|True |False |True
 |False|False |False |False
 |===
 
@@ -114,7 +122,7 @@ print(both)
 
 image::./images/image02.png[]
 
-== CONTROL FLOW (제어 흐름)
+== CONTROL FLOW (제어 흐름) - Branching
 
 [source, python]
 ----
@@ -208,7 +216,7 @@ while <condition>:
     <expression>
 ----
 
-* <condition>은 boolean을 계산
+* <condition>은 boolean을 평가
 * 만약 <condition>이 True이면, while 코드 블록의 모든 절차를 수행
 * <condition>을 다시 체크
 * <condition>이 False일때 까지 반복
