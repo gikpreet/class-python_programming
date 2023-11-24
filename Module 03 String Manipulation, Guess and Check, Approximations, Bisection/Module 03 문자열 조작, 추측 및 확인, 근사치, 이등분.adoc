@@ -69,7 +69,7 @@ s[4:1:-2]   -> "ec"
 s = "hello"
 
 s[0] = 'y'              -> error
-s = 'y' + s[1:len(s)]   -> 하용함. s는 새 객체에 바인딩 됨
+s = 'y' + s[1:len(s)]   -> 허용함. s는 새 객체에 바인딩 됨
 ----
 
 image:./images/image01.png[]
