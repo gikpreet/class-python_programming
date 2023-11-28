@@ -237,13 +237,11 @@ print(guess, 'is close to the cobe root of', cube)
 
 == BISECTION SEARCH CONVERGENCE
 
-:stem: latex
-
 * 검색 공간
 ** 첫 번째 추측: N/2
 ** 두 번째 추측: N/4
 ** k 번째 추측: N/2^k^
-* 추측은 stem:[log_2N]으로 수렴됨
+* 추측은 _log_2N_ 으로 수렴됨
 * 이분법 검색은 함수 값이 입력에 따라 단조롭게 변할 때 동작함
 * 코드는 1보다 큰 cube에서만 작동합니다. 이유는?
 * 해볼 것   -> 음수 cube에서도 동작하도록 수정
