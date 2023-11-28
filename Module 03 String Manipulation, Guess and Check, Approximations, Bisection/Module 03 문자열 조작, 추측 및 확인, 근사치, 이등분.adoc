@@ -237,7 +237,7 @@ print(guess, 'is close to the cobe root of', cube)
 
 == BISECTION SEARCH CONVERGENCE
 
-:stem: asciimath
+:stem: latex
 
 * 검색 공간
 ** 첫 번째 추측: N/2
