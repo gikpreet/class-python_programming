@@ -33,7 +33,7 @@
 == 곱셈 - iterative solution
 
 * a와 b를 곱하는 것은 "a를 b번 더하는 것과 같음"
-* **상테**를 캡처
+* **상태**를 캡처
 ** **iteration** number(i)는 b에서 시작, i <- i - 1 후 0이 되면 정지
 ** 현재 **값을 계산**(result), result <- result + a
 
