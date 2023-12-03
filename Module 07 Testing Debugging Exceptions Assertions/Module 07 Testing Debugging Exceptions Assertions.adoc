@@ -28,7 +28,7 @@ image:./images/image02.png[]
 
 * **코드 실행**이 보장될 때
 ** Syntax error 제거
-** Static symantic error를 제거합니다.
+** Static semantic error를 제거합니다.
 ** Python 인터프리터는 일반적으로 이러한 항목을 찾아줄 수 있습니다.
 * **예상되는 결과 세트**가 있음
 ** 입력 세트
@@ -37,7 +37,7 @@ image:./images/image02.png[]
 == 테스트 분류
 
 * Unit testing
-** 프로그램의 각 조각 금증
+** 프로그램의 각 조각 검증
 ** 각 **함수를 분리하여 테스팅**
 * Regression testing
 ** 버그를 발견하면 테스트를 추가
@@ -108,8 +108,8 @@ def sqrt(x, eps):
 
 == Glass box Testing
 
-* **코드를 직접 사용**하여 테스트 살계를 설계하도록 가이드
-* 코드를 통한 모든 잠재적 코드가 정어도 한번 테스트 되면 **_path-complete_** 라고 함
+* **코드를 직접 사용**하여 테스트 설계를 설계하도록 가이드
+* 코드를 통한 모든 잠재적 코드가 적어도 한번 테스트 되면 **_path-complete_** 라고 함
 * Glass box 테스트의 **단점**
 ** 임의적으로 여러번 루프를 통과할 수 있음
 ** 경로가 누락될 수 있음
@@ -158,9 +158,9 @@ def abs(x):
 ** 코드 중간에 print 넣기
 ** 값에 따라 버그가 있을 수 있는 위치 결정
 
-== 디버그 단계
+== 디버깅 단계
 
-* 프로그램 코드를 스터디
+* 프로그램 코드를 연구
 ** 무엇이 틀렸는지 묻지 마라
 ** 예상하지 못한 결과를 어떻게 얻었는지 물어보라
 
@@ -179,7 +179,7 @@ def abs(x):
 test = [1,2,3]  # index error
 ----
 
-* 부적절한 유형으로 타입 변환 시도:
+* 부적절한 타입으로 변환 시도:
 
 [source, python]
 ----
@@ -193,9 +193,20 @@ int(test)   # type error
 a   # Name error
 ----
 
-* '3' / 4 타입 오류
+* 적절한 강제적 조치 없이 데이터 타입 혼합
 
-닫는 괄호, 따옴표 등을 잊음
+[source, python]
+----
+'3' / 4   # Typeerror
+----
+
+* 닫는 괄호, 따옴표 등을 잊음
+
+[source, python]
+----
+a = len([1,2,3]
+print(a)    #SyntaxError
+----
 
 == 논리 오류(Logic Error) - 어려움
 
@@ -205,7 +216,7 @@ a   # Name error
 ** 다른 사람에게
 ** 벽에 대고
 
-== Dont'a and Do
+== Don't a and Do
 
 [cols="1a,1a" options=header]
 |===
@@ -256,9 +267,9 @@ a   # Name error
 +
 [source, python]
 ----
-'a` / 4   # Type error
+'a' / 4   # Type error
 ----
-+
+
 
 == 기타 예외 유형
 
@@ -267,8 +278,8 @@ a   # Name error
 ** NameError: local 또는 global에서 이름을 찾을 수 없음
 ** AttributeError: 속성 참조 실패
 ** TypeError: 피 연산자의 유형이 올바르지 않음
-** ValueError: 피 연산자의 유형은 괜찮으나 값이 잘못죔
-** IOError: IO 시스템이 오작동을 보고함(예: 파알을 찾을수 없음)
+** ValueError: 피 연산자의 유형은 괜찮으나 값이 잘못 됨
+** IOError: IO 시스템이 오작동을 보고함(예: 파일을 찾을 수 없음)
 
 == 예외 처리
 
@@ -283,7 +294,7 @@ except:
     print("Bug in user input.")
 ----
 +
-* try 본문의 모든 문에서 발생한 예외는 Except 문에 의해 처리되고 실행은 Except 문의 본문으로 계속됨
+* `try` 본문의 모든 문에서 **일어난(raised)** 예외는 `except` 문에 의해 **처리(handled)**되고 실행은 except 문의 본문으로 계속됨
 
 == 특정 예외 처리
 
@@ -308,8 +319,8 @@ except: # 모든 예외 처리
 * `else:`
 ** 관련 try body의 실행이 예외없이 완료되면 else의 body가 실행됨
 * `finally:`
-** finally의 body는 다른 오류가 발생했거나 `break`, `contiune`, `return`을 실행한 경우에도 `try`, `else`, `except` 절 다음에 항상 실행됨
-** 예외가 발생하더라고 실행되어야 하는 정리 코드에 유용(예: 파일 닫기)
+** finally의 body는 다른 오류가 발생했거나 `break`, `continue`, `return`을 실행한 경우에도 `try`, `else`, `except` 절 다음에 항상 실행됨
+** 예외가 발생하더라도 실행되어야 하는 정리 코드에 유용(예: 파일 닫기)
 
 == 예외 처리를 위해 해야 할 것
 
@@ -320,14 +331,15 @@ except: # 모든 예외 처리
 * `error` 값을 반환
 ** 어떤 값을 선택할 것인가?
 ** 특별한 값을 확인해야 하는 코드가 복잡해짐
-* Python: 예외를 일으킴
-
+* 실행을 중지하고 **오류** 상태 **신호**를 보냄
+** Python: 예외를 일으킴
++
 [source, python]
 ----
 raise Exception("descriptive string")
 ----
 
-== Control flow로서의 예외
+== 제어 흐름(Control flow)로서의 예외
 
 * 오류가 발생했을 때 특별한 값을 반환하지 않고 `error value` 가 return 되었는지 확인
 * 대신, 함수의 specification과 일치하는 결과를 생성할 수 없으면 예외를 발생시킴
@@ -338,7 +350,7 @@ raise <exceptionName>(<arguments>)
 raise ValueError("something is wrong")
 ----
 
-== 예제: Exception을 일으킴
+== 예제: Exception
 
 [source, python]
 ----
@@ -370,8 +382,11 @@ test_grades =   [[['peter', 'parker'], [80.0, 70.0, 85.0]],
 
 * 이름, 성적 및 이름이 포함된 **새 수업 목록**을 만듦
 
+[source, python]
+----
 [[['peter', 'parker'], [80.0, 70.0, 85.0], 78.33333],
 [['bruce', 'wayne'], [100.0, 80.0, 74.0], 84.666667]]]
+----
 
 == 예제 코드
 
@@ -406,14 +421,14 @@ test_grades = [ [['peter', 'parker'], [10.0, 5.0, 85.0]],
 ----
 
 * `ZeroDivisionError: float division by zero` 오류가 발생됨 +
-아래 코드에서:
+오류 코드:
 
 [source, python]
 ----
 return sum(grades) / len(grades)
 ----
 
-== Option 1: 오류 메시지를 `print`` 하여 오류 표시
+== Option 1: 오류 메시지를 `print` 하여 오류 표시
 
 * 메시지를 사용하여 문제가 있음을 알리기로 결정
 
@@ -496,6 +511,6 @@ def avg(grades):
 * 사용자가 **잘못된 데이터 입력**을 제공하면 **예외**가 발생
 * `Assertion` 을 사용하여
 ** argument 또는 값의 `타입` 을 확인
-** 데이터 구조의 `불변성(invarants)` 이 충족되는지 확인
+** 데이터 구조의 `불변성(invariants)` 이 충족되는지 확인
 ** return에 대한 `제약 조건(constraints)` 을 확인
 ** 절차상의 제약 조건 `위반` 여부 확인(예: 목록에 중복 항목이 없음)
