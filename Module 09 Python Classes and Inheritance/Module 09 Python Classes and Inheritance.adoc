@@ -44,7 +44,7 @@ class Coordinate(object)
 (self.x - self.y)**2
 ----
 +
-*** `self` 는 클래스 정의의 메소드에 대핸 파라미터
+*** `self` 는 클래스 정의의 메소드에 대한 파라미터
 ** 클래스는 **모든 인스턴스에 공통되는** 데이터와 메소드를 정의함
 
 * 클래스의 인스턴스
@@ -73,7 +73,7 @@ image:./images/image01.png[]
 
 image:./images/image02.png[]
 
-== 겍체 그룹은 속성을 가짐
+== 객체 그룹은 속성을 가짐
 
 * **데이터 속성(Data attribute)**
 ** 객체의 데이터를 어떻게 표현할 것인가?
@@ -130,7 +130,7 @@ a = Animal(3)
 [source, python]
 ----
 a.age
-a.get_age
+a.get_age()
 ----
 
 == 정보 은닉(Information hiding)

@@ -13,6 +13,7 @@
 * 각각의 데이터는 객체(object)이고, 모든 객체는 아래의 것들을 가짐:
 ** 타입
 ** 내부적 데이터 표현(primitive 또는 composite)
+** 객체와 **상호작용(interaction)**하는 프로시저 집합
 * 객체는 타입의 **인스턴스**
 ** `1 2 3 4` 는 `int` 의 인스턴스
 ** `"hello"` 는 string의 인스턴스
@@ -24,7 +25,7 @@
 * **객체를 조작**할 수 있음
 * **객체를 소멸**시킬 수 있음
 ** 명시적으로 객체를 `삭제(del)` 하거나 그냥 "잊어버릴" 수 있음
-** Python 시스템은 소멸되었거나 액세스 할 수 없는 객체를 회수함 - 이를 "Gabage Collection"이라 부름
+** Python 시스템은 소멸되었거나 액세스 할 수 없는 객체를 회수함 - 이를 "Garbage Collection"이라 부름
 
 == 객체란 무엇인가?
 
@@ -43,10 +44,10 @@ image:./images/image01.png[] +
 +
 * list 조작
 ** `L[i], L[i:j], +`
-** `len(), min(), max(), del(L[i])``
+** `len(), min(), max(), del(L[i])`
 ** `L.append(),L.extend(),L.count(),L.index(), L.insert(),L.pop(),L.remove(),L.reverse(), L.sort()`
 * 내부 표현은 비공개이어야 합니다.
-* 내부 표현을 직접 조작하면 올바른 행동이 동작을 보장못함
+* 내부 표현을 직접 조작하면 올바른 동작을 보장못함
 
 == OOP의 장점
 
@@ -73,7 +74,7 @@ image:./images/image01.png[] +
 
 == 타입 정의
 
-* `class` 키워즈를 사용하여 새 타입 정의
+* `class` 키워드를 사용하여 새 타입 정의
 
 [source, python]
 ----
@@ -87,13 +88,13 @@ class Coordinate(object):
 ** `Coordinate` 는 `object` 의 서브클래스
 ** `object` 는 `Coordinate` 의 수퍼클래스
 
-== 속성(Attribute) 란?
+== 속성(Attribute) 이란?
 
 * 클래스에 **"속하는"** 데이터 및 프로시저
 * **데이터 속성**
 ** 클래스를 구성하는 객체로서의 데이터
 ** 예로, Coordinate는 두 개의 숫자로 구성됨
-* **메소드(procedual attribute)** 
+* **메소드(procedural attribute)** 
 ** 클래스에서만 동작하는 함수로 생각할 것
 ** 객체와 상호작용 하는 방법
 ** 예로, 두 Coordinate 객체 사이의 거리를 정의할 수는 있지만 두 list 개체 사이의 거리는 의미가 없음
@@ -160,7 +161,6 @@ image:./images/image03.png[]
 * 같은 방법
 +
 image:./images/image04.png[]
-+
 
 == 객체의 표현 print
 
@@ -206,7 +206,7 @@ class Coordinate(object):
 [source, python]
 ----
 >>> c = Coordinate(3, 4)
->>> print(c)    #
+>>> print(c)    
 <3, 4>
 >>> print(type(c))
 <class __main__.Coordinate>
@@ -248,7 +248,7 @@ __lt__(self, other) # self < other
 __len__(self) # len(self)
 __str__(self) # print self
 ----
-.. 그외 기타..
+.. 그 외 기타..
 
 == 예제: 분수(Fractions)
 
@@ -266,6 +266,6 @@ __str__(self) # print self
 * 공유하는 객체를 함께 묶음
 ** 공통 속성, 및
 ** 해당 속성에 대해 작동하는 절차
-* 객체를 구현하는 방법과 객체를 사용하는 방법을 구별하기 위해 추성화를 사용
+* 객체를 구현하는 방법과 객체를 사용하는 방법을 구별하기 위해 추상화를 사용
 * 다른 객체 클래스의 동작을 상속하는 객체 추상화 계층 구축
 * Python의 기본 클래스 위에 자체적인 객체 클래스 생성
