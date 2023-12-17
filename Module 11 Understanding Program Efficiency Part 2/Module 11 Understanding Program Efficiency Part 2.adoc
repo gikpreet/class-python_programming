@@ -130,6 +130,19 @@ def bisect_search1(L, e):
             return bisect_search1(L[half:], e)  # not constant
 ----
 
+== 첫 번째 이분 검색 방법 복잡도
+
+* **구현 1 - bisect_search1**
+** O(log n) 이분 검색은
+*** 각각의 재귀 호출에서, 검색할 범위는 반으로 절단됨
+*** 원래의 크기가 n이면, n(2^k) = 1일 때 또는 k = log n일 때 크기가 1까지 줄어듦
+** 각 이분 검색에서 각 복사된 list에 대해 O(n) 
+*** 이것은 각각의 호출에 대한 비용으로, 각 단계의 재귀는 이를 행함
+** O(log n) * O(n) -> **O(n log n)**
+** 정말 신중하다면, list의 길이 만큼이 복사되어 각 재귀에서 사용된다는 것을 기억할 것
+*** 복사 비용은 **_O(n)_**이며 이는 재귀 비용으로 인한 log N 비용
+
+
 == 다른 방법의 이분 검색
 
 image:./images/image03.png[]
@@ -167,7 +180,7 @@ def bisect_search2(L, e):
 
 == 두 번째 이분 검색 방법 복잡도
 
-* 두 번째 구현 - `bisect_search2` 와 helper
+* **두 번째 구현 - `bisect_search2`** 와 helper
 * `O(log n)` 이분법 검색 호춣
 * 각 재귀 호출 마다 검색 범위 크기가 절반으로 줄어듬
 * 원래 범위의 크기가 n 이면 최악의 경우 `n(2^k^)` 일 때, 또는 `k = log n` 일때 크기 1의 범위까지 내려감
@@ -255,3 +268,46 @@ def fact_recur(n):
 ** 비용이 많이 듦
 ** 보다 신속하게 합리적인 답을 제공할 수 있는 대략적인 솔루션을 고려하도록 유도
 
+== 하노이 타워 복잡성
+
+* t~n~은 크기 n의 타워를 해결할 시간을 나타냄
+* t~n~ = 2t~n-1~ + 1
+*      = 2(2t~n-1~ + 1) + 1
+*      = 4t~n-1~ + 2) + 1
+*      = 4(2t~n-3~ + 1) + 2 + 1
+*      = 8t~n-3~ + 4 + 2 + 1
+*      = 2^k^t~n-k~ + 2^k-1^ + … + 4 + 2 + 1
+*      = 2^n-1^ + 2^n-2^ + … + 4 + 2 + 1
+*      = 2^n^- 1
+* Order of Growth는 **_O(2n)_**
+
+== 기하급수적 복잡성
+
+* 정수 집합이 주어지면(반복이 없는), 가능한 모든 부분집합을 생성 – 멱집합(Power Set)이라 부름
+* {1,2,3,4}가 생성하는 부분집합
++
+----
+{}, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}
+----
++
+* 순서는 중요하지 않음
++
+----
+{}, {1}, {2}, {1,2}, {3}, {1,3}, {2,3}, {1,2,3}, {4}, {1,4}, {2,4},	 {1,2,4}, {3,4}, {1,3,4}, {2,3,4}, {1,2,3,4}
+----
+
+== 멱집합 - 컨셉
+
+[source, python]
+----
+def genSubsets(L):
+    res = []
+    if len(L) == 0:
+        return [[]]     # list of empy list
+    smaller = genSubsets(L[:-1])    # all subsets wothout lastelement
+    extra = L[-1:]      # create a list of just last element
+    new = []
+    for small in smaller:
+        new.append(small + extra)   # for all smaller solutions, andd one with last element
+    return smaller + new            # combine those with last element and those without
+----
